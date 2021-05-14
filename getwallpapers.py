@@ -77,7 +77,7 @@ def is_resolution(parser, resolution):
 
 
 def main():
-    # Организуем работу с командной стракой и получаем аргументы дата/разрешение
+    # Организуем работу с командной строкой и получаем аргументы дата/разрешение
     parser = argparse.ArgumentParser(usage='Save pictures from www.smashingmagazine.com')
     parser.add_argument('date', type=lambda x: is_date(parser, x))
     parser.add_argument('resolution', type=lambda x: is_resolution(parser, x))
