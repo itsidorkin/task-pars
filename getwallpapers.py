@@ -85,15 +85,11 @@ def main():
     date = args.date
     resolution = args.resolution
 
-    # resolution = '1280x1024'
-    # date = '32012'
-
     # Получаем код страницы нужной даты и все ссылки на изображения
     url = get_url(date)
     response = requests.get(url)
     if response.status_code != 200:
-        print("status = " + str(response.status_code), "url = " + url, sep='\n')
-        parser.error("Что-то не так. (возможно такой ссылки не существут)")
+        parser.error("Что-то не так. (возможно такой ссылки не существует)")
     soup = BeautifulSoup(response.text, 'html.parser')
     div = soup.find('div', class_='c-garfield-the-cat')
     links = div.find_all('a', href=True)
