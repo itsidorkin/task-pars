@@ -56,7 +56,7 @@ def is_date(parser, date):
         datetime.datetime.strptime(date, '%m%Y')
     except ValueError:
         parser.error("Неверный формат даты MMYYYY")
-    if int(date[2:]) > datetime.datetime.now().year:
+    if int(date[-4:]) > datetime.datetime.now().year:
         parser.error("Отсутствуют изображения из будущего")
     return date
 
