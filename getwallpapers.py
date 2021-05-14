@@ -50,7 +50,7 @@ def is_date(parser, date):
     """
     :param parser: Объект парсер
     :param date: Дата
-    :return: Проверяет аргумет date на соотвествие формату "дата" и возвращает его
+    :return: Проверяет аргумент date на соответствие формату "дата" и возвращает его
     """
     try:
         datetime.datetime.strptime(date, '%m%Y')
@@ -65,7 +65,7 @@ def is_resolution(parser, resolution):
     """
     :param parser: Объект парсер
     :param resolution: Разрешение
-    :return: Проверяет аргумет resolution на соотвествие формату "разрешение" и возвращает его
+    :return: Проверяет аргумент resolution на соответствие формату "разрешение" и возвращает его
     """
     try:
         length, width = [int(i) for i in resolution.split('x')]
