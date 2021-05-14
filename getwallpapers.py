@@ -43,7 +43,6 @@ async def run_check(pics):
         for j in pics:
             task = ensure_future(fetch(j, session))  # преобразует ссылку в задачу
             tasks.append(task)
-        tasks.append(ensure_future(fetch("https://pythonchik.ru/pic/lb1/cover_2f9c9g.png", session)))
         return await gather(*tasks)
 
 
@@ -106,7 +105,6 @@ def main():
         if resolution in i['href']:
             pic_url.append(i['href'])
             pic_name.append(i['href'].split('/').pop(-1))
-    pic_name.append('uuu.png')
     if len(pic_url) == 0:
         parser.error("Изображений с таким разрешением не найдено")
 
