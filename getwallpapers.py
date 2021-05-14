@@ -56,7 +56,7 @@ def is_date(parser, date):
         datetime.datetime.strptime(date, '%m%Y')
     except ValueError:
         parser.error("Неверный формат даты MMYYYY")
-    if int(date[-4:]) > datetime.datetime.now().year:
+    if datetime.date(int(date[-4:]), int(date[:-4]), 1) > datetime.datetime.now().date():
         parser.error("Отсутствуют изображения из будущего")
     return date
 
@@ -92,7 +92,7 @@ def main():
     url = get_url(date)
     response = requests.get(url)
     if response.status_code != 200:
-        print(response.status_code, url)
+        print("status = " + str(response.status_code), "url = " + url, sep='\n')
         parser.error("Что-то не так. (возможно такой ссылки не существут)")
     soup = BeautifulSoup(response.text, 'html.parser')
     div = soup.find('div', class_='c-garfield-the-cat')
