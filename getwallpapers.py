@@ -15,7 +15,7 @@ def get_url(date):
     :param date: Дата публикации изображения
     :return: Ссылка на изображения опубликованные в указанную дату
     """
-    date = datetime.date(int(date[-4:]), int(date[:-4]), 1)
+    date = datetime.date(int(date[-4:]), int(date[:-4]), 1) - relativedelta(months=1)
     next_date = date + relativedelta(months=1)
 
     return 'https://www.smashingmagazine.com/{}/{:02}/desktop-wallpaper-calendars-{}-{}/'.format(
