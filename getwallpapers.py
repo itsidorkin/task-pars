@@ -98,7 +98,7 @@ def main():
     div = soup.find('div', class_='c-garfield-the-cat')
     links = div.find_all('a', href=True)
 
-    # Ищем ссылки на изображения, которые соотвествуют требемому разрешению
+    # Ищем ссылки на изображения, которые соответствуют требуемому разрешению
     pic_url = []
     pic_name = []
     for i in links:
@@ -109,8 +109,8 @@ def main():
         parser.error("Изображений с таким разрешением не найдено")
 
     # Получаем и сохраняем найденные изображения
-    future = ensure_future(run_check(pic_url))  # формирует задачи из awaitable объектов
-    for i, pic in enumerate(get_event_loop().run_until_complete(future)):  # Запускает список задач и получает ответ
+    future = ensure_future(run_check(pic_url))  # формируем задачи из awaitable объектов
+    for i, pic in enumerate(get_event_loop().run_until_complete(future)):  # Запускаем список задач и получаем ответ
         if pic is not None:
             out = open("{}".format(pic_name[i]), "wb")
             out.write(pic)
